@@ -3,6 +3,9 @@ import json
 # buka json
 stokbarang = open('datastok.json','r')
 
+def cek_stok():
+    pass
+
 def beli_pembeli():
     ## space buat ngisi ##
     pass
@@ -22,7 +25,7 @@ def menu_pembeli():
     >> ''')))
 
     if choice == 1:
-        stok()
+        cek_stok()
     elif choice == 2:
         beli_pembeli()
     elif choice == 3:
@@ -31,7 +34,7 @@ def menu_pembeli():
         show_menu()
     else:
         print('Masukkan ulang pilihan')
-    pass
+        menu_pembeli()
 
 def penjual_stok():
     with open('datastok.json') as f:
