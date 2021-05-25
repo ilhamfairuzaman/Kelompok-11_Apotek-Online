@@ -1,0 +1,14 @@
+{
+  "List": [
+    {
+      "nama": "Hansaplast",
+      "harga": 5000,
+      "stok": 50
+    },
+    {
+      "nama": "Paracetamol",
+      "harga": 25000,
+      "stok": 10
+    }
+  ]
+}
