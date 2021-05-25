@@ -1,5 +1,5 @@
 import json
-
+# ini adalah mahakarya
 # buka json
 stokbarang = open('datastok.json','r')
 
