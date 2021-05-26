@@ -4,38 +4,40 @@ import json
 stokbarang = open('datastok.json','r')
 
 def cek_stok():
-    pass
+    data = json.load(stokbarang)
+    print(data)
 
 def beli_pembeli():
     obat_dibeli = input("Masukkan obat yang dibeli: ")
-banyak_obat = input("Berapa jumlah obat yang dibeli: ")
-if obat_dibeli and banyak_obat == 'ada':
-    input("Apakah ingin membeli obat lain?(y/t): ")
-    if 'y':
-        pass
-        #kembali ke menu menampilkan stok
-    if 't':
-        print("Lengkapi identitas dibawah")
-        nama_pembeli = input("Masukkan nama pembeli : ")
-        umur_pembeli = int(input("Masukkan umur pembeli : "))
-        sex_pembeli = input("Masukkan gender pembeli : ")
-        alamat_pembeli = input("Masukkan alamat pembeli : ")
-        # Memilih Metode
-        print("""\nMetode Pembayaran
-        1. Lewat ATM/Mbanking/Bank ke no rekening xxxxxxx 
-        2. Bayar Ditempat
-        *Terdapat pajak 2,5%
-        Pilih (1/2)
-        """, end="\n")
-        metode = input(">> ")
-        #menampilkan struk
+    banyak_obat = input("Berapa jumlah obat yang dibeli: ")
+    #stokbarang = open('datastok.json', 'r')
+    data = json.load(stokbarang)
+    if obat_dibeli in data :
+        beli_lg = input("Apakah ingin membeli obat lain?(y/t): ")
+        if beli_lg == 'y':
+            print(data)
+            return obat_dibeli
+            #kembali ke menu menampilkan stok
+        if beli_lg == 't':
+            print("Lengkapi identitas dibawah")
+            nama_pembeli = input("Masukkan nama pembeli : ")
+            umur_pembeli = int(input("Masukkan umur pembeli : "))
+            sex_pembeli = input("Masukkan gender pembeli : ")
+            alamat_pembeli = input("Masukkan alamat pembeli : ")
+            # Memilih Metode
+            print("""\nMetode Pembayaran
+            1. Lewat ATM/Mbanking/Bank ke no rekening xxxxxxx 
+            2. Bayar Ditempat
+            *Terdapat pajak 2,5%
+            Pilih (1/2)
+            """, end="\n")
+            metode = input(">> ")
+            #menampilkan struk
+        return beli_lg
     else:
-        print("maaf kode tidak tepat!")
-else:
-    pass
-    #kembali ke menu lihat stok
-    pass
-#yang fungsi ini masih banyak yang kurang
+        return cek_stok()
+        pass
+    #yang fungsi ini masih banyak yang kurang
 def konsultasi():
     ## space buat ngisi ##
     pass
