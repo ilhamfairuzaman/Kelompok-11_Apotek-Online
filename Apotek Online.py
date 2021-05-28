@@ -1,7 +1,62 @@
 import json
+import datetime
 # ini adalah mahakarya
 # buka json
 stokbarang = open('datastok.json','r')
+
+#global variable
+idb = []
+hargab = []
+jumlahb = []
+namab = []
+list_belanja = [namab,jumlahb]
+totalpb = []
+
+
+def struk():
+
+    print("Lengkapi identitas dibawah")
+    nama_pembeli = input("Masukkan nama pembeli : ")
+    # Memilih Metode
+    carabayar = input("""\nMetode Pembayaran
+1. Online Payment
+2. Bayar Ditempat (cash)
+Pilih (1/2)\n >> """)
+    hargatot = sum(totalpb)
+    print('')
+    print('=' * 15)
+    print('KWITANSI APOTEK SUSAH SEHAT')
+    print('=' * 15)    
+    print('')
+    print('Tgl\t:',datetime.datetime.now())
+    print('Atas nama\t:', nama_pembeli)
+    print('-' * 15)
+    lst = len(jumlahb)
+    i = 0
+    print('Nama\tJumlah\tHarga\tTotal')
+    while i < lst:
+        print(f'{namab[i]}\t{jumlahb[i]}\t{hargab[i]}\t{hargab[i]*jumlahb[i]}')
+        i += 1
+    print('-' * 15)
+    print('Harga Total\t:', hargatot)
+    print(f"Keterangan\t:{'Lunas' if carabayar == '1' else 'Belum Dibayar'}")
+#   pass
+    i = 0
+    n = len(idb)
+    # update json setelah beli
+    while i < n:
+        bukaF = open('datastok.json','r')
+        data = json.load(bukaF)
+        temp = data['List']
+        temp[idb[i]]["stok"] -= jumlahb[i]
+        
+        # write json
+        bukaF = open('datastok.json','w+')
+        bukaF.write(json.dumps(data,indent=2))
+        bukaF.close()
+
+        # limitting while
+        i+=1
 
 def cek_stok():
     with open('datastok.json') as f:
@@ -25,109 +80,89 @@ def beli_pembeli():
         print("[%d] %s %s %s" % (indeks,temp[indeks]['nama'],temp[indeks]['harga'],temp[indeks]['stok']))
     idbeli = int(input('Masukkan ID barang yang mau dibeli >> '))
     jumlahbeli = int(input('Masukkan jumlah barang yang mau dibeli >> '))
-    temp[idbeli]['stok'] -= jumlahbeli
+    
+    idb.append(idbeli)
+    hargab.append(temp[idbeli]['harga'])
+    jumlahb.append(jumlahbeli)
+    namab.append(temp[idbeli]['nama'])
+    totalpb.append(temp[idbeli]['harga']*jumlahbeli)
+
     if jumlahbeli > temp[idbeli]['stok']:
-        print('Anda membeli terlalu banyak, mohon dikurangi')
-        jumlahbeli = int(input('Masukkan ID barang yang mau dibeli >> '))
+        print('Anda membeli terlalu banyak, mohon dikurangi !!! ')
+        idb.pop()
+        hargab.pop()
+        jumlahb.pop()
+        namab.pop()
+        totalpb.pop()
+        beli_pembeli()
     elif jumlahbeli <= temp[idbeli]['stok']:
+        beli_lg = input("Apakah ingin membeli obat lain? (y/n): ")
+        if beli_lg == 'y':
+            beli_pembeli()
+        elif beli_lg =='n':
+            struk()
 
-    fjason = open('datastok.json','w+')
-    fjason.write(json.dumps(data, indent=2))
-    fjason.close()
-
-
-    # obat_dibeli = input("Masukkan obat ingin yang dibeli: ")
-    # banyak_obat = input("Berapa jumlah obat yang dibeli: ")
-    # stokbarang = open('datastok.json', 'r')
-    # data = json.load(stokbarang)
-    # if obat_dibeli in data :
-    #     beli_lg = input("Apakah ingin membeli obat lain?(y/t): ")
-    #     if beli_lg == 'y':
-    #         print(data)
-    #         return obat_dibeli
-    #         #kembali ke menu menampilkan stok
-    #     if beli_lg == 't':
-    #         print("Lengkapi identitas dibawah")
-    #         nama_pembeli = input("Masukkan nama pembeli : ")
-    #         umur_pembeli = int(input("Masukkan umur pembeli : "))
-    #         sex_pembeli = input("Masukkan gender pembeli : ")
-    #         alamat_pembeli = input("Masukkan alamat pembeli : ")
-    #         # Memilih Metode
-    #         print("""\nMetode Pembayaran
-    #         1. Lewat ATM/Mbanking/Bank ke no rekening xxxxxxx 
-    #         2. Bayar Ditempat
-    #         *Terdapat pajak 2,5%
-    #         Pilih (1/2)
-    #         """, end="\n")
-    #         metode = input(">> ")
-    #         #menampilkan struk
-    #     return beli_lg
-    # else:
-    #     return cek_stok()
-    #     pass
-    # #yang fungsi ini masih banyak yang kurang
 def konsultasi():
     #keluhan keluhan asyik
-keluhan=["1. susah bab",
-         "2. pusing kepala",
-         "3. suhu badan tinggi",
-         "4. gigi bengkak",
-         "5. terasa nyeri otot",
-         "6. bisul",
-         "7. gampang lelah",
-         "8. sariawan",
-         "9. mata kerasa perih \n"]
+    keluhan=["1. susah bab",
+            "2. pusing kepala",
+            "3. suhu badan tinggi",
+            "4. gigi bengkak",
+            "5. terasa nyeri otot",
+            "6. bisul",
+            "7. gampang lelah",
+            "8. sariawan",
+            "9. mata kerasa perih \n"]
 
-#menunjukkan keluhan ke pembeli
-for keluh in keluhan :
-    print(keluh)
+    #menunjukkan keluhan ke pembeli
+    for keluh in keluhan :
+        print(keluh)
 
-tanya= (input('Apakah keluhan anda ada dalam daftar ?(Y/N)\n:'))
-if tanya == 'Y':
-    #menanyakan apakah keluhan 
-    keluhan_yang_kamurasain = int(input('Masukkan keluhan penyakit yang anda rasakan (1/2/3/4/5/6/7/8/9) \n:'))
-    if keluhan_yang_kamurasain == 1:
-        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
-    elif keluhan_yang_kamurasain == 2:
-        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
-    elif keluhan_yang_kamurasain == 3:
-        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
-    elif keluhan_yang_kamurasain == 4:
-        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
-    elif keluhan_yang_kamurasain == 5:
-        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
-    elif keluhan_yang_kamurasain == 6:
-        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
-    elif keluhan_yang_kamurasain == 7:
-        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
-    elif keluhan_yang_kamurasain == 8:
-        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
-    elif keluhan_yang_kamurasain == 9:
-        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
-    else:
-        pass
-elif tanya == 'N':
-    print("\nMohon maaf, apotek kami belum bisa melayani keluhan penyakit tersebut\nkami sangat menyarankan untuk menghubungi nomor rumah sakit yang sesuai dengan kota anda, berikut adalah nomor rumah sakit di setiap provinsi :\n ")
-    list_rs=[
-    'RSUP dr Kariadi, Semarang.Telepon: (024) 8413476',
-    'RSUD KRMT Wongsonegoro, Kota Semarang.Telepon: (024) 6711500',
-    'RSUD Tugurejo, Semarang.Telepon: (024) 7605297',
-    'RSU Sultan Agung, Semarang.Telepon: (024) 6580019',
-    'RSU St Elizabeth, Semarang.Telepon: (024) 8310035',
-    'RSU Telogorejo, Semarang.Telepon: (024) 86466000', 
-    'RSU Columbia Asia, Semarang.Telepon: (024) 7629999',
-    'RSU Tk III Bhakti Wira Tamtama, Kota Semarang.Telepon: (024) 3555944',
-    'RSU Bhayangkara, Semarang.Telepon: (024) 6720675',
-    'RSUD Salatiga.Telepon: (0298) 324074',
-    'RS Paru Dr Ario Wirawan, Salatiga.Telepon: (0298) 326130',
-    'RSU Tk IV 04.07.03 dr Asmir, SalatigaTelepon: (0298) 326045',
-    'RSUD Dr H Soewondo, Kendal.Telepon: (0294) 381433',
-    'RSUD Ambarawa Telepon: (0298)591020',
-    'RSUD Sunan Kalijaga Demak Telepon:(0291)685018',
-    'RSUD dr R Soedjati, Grobogan.Telepon:(0292) 421004']
-    for rs in list_rs:
-        print(rs)
-    pass
+    tanya= (input('Apakah keluhan anda ada dalam daftar ?(Y/N)\n:'))
+    if tanya == 'Y':
+        #menanyakan apakah keluhan 
+        keluhan_yang_kamurasain = int(input('Masukkan keluhan penyakit yang anda rasakan (1/2/3/4/5/6/7/8/9) \n:'))
+        if keluhan_yang_kamurasain == 1:
+            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+        elif keluhan_yang_kamurasain == 2:
+            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+        elif keluhan_yang_kamurasain == 3:
+            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+        elif keluhan_yang_kamurasain == 4:
+            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+        elif keluhan_yang_kamurasain == 5:
+            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+        elif keluhan_yang_kamurasain == 6:
+            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+        elif keluhan_yang_kamurasain == 7:
+            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+        elif keluhan_yang_kamurasain == 8:
+            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+        elif keluhan_yang_kamurasain == 9:
+            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+        else:
+            pass
+    elif tanya == 'N':
+        print("\nMohon maaf, apotek kami belum bisa melayani keluhan penyakit tersebut\nkami sangat menyarankan untuk menghubungi nomor rumah sakit yang sesuai dengan kota anda, berikut adalah nomor rumah sakit di setiap provinsi :\n ")
+        list_rs=[
+        'RSUP dr Kariadi, Semarang.Telepon: (024) 8413476',
+        'RSUD KRMT Wongsonegoro, Kota Semarang.Telepon: (024) 6711500',
+        'RSUD Tugurejo, Semarang.Telepon: (024) 7605297',
+        'RSU Sultan Agung, Semarang.Telepon: (024) 6580019',
+        'RSU St Elizabeth, Semarang.Telepon: (024) 8310035',
+        'RSU Telogorejo, Semarang.Telepon: (024) 86466000', 
+        'RSU Columbia Asia, Semarang.Telepon: (024) 7629999',
+        'RSU Tk III Bhakti Wira Tamtama, Kota Semarang.Telepon: (024) 3555944',
+        'RSU Bhayangkara, Semarang.Telepon: (024) 6720675',
+        'RSUD Salatiga.Telepon: (0298) 324074',
+        'RS Paru Dr Ario Wirawan, Salatiga.Telepon: (0298) 326130',
+        'RSU Tk IV 04.07.03 dr Asmir, SalatigaTelepon: (0298) 326045',
+        'RSUD Dr H Soewondo, Kendal.Telepon: (0294) 381433',
+        'RSUD Ambarawa Telepon: (0298)591020',
+        'RSUD Sunan Kalijaga Demak Telepon:(0291)685018',
+        'RSUD dr R Soedjati, Grobogan.Telepon:(0292) 421004']
+        for rs in list_rs:
+            print(rs)
 
 def menu_pembeli():
     print('SELAMAT DATANG DI APOTEK SUSET')

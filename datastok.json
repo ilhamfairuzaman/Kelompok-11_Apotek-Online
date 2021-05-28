@@ -3,12 +3,12 @@
     {
       "nama": "Hansaplast",
       "harga": 5000,
-      "stok": 45
+      "stok": 15
     },
     {
       "nama": "Paracetamol",
       "harga": 25000,
-      "stok": 10
+      "stok": 5
     }
   ]
 }
