@@ -4,40 +4,68 @@ import json
 stokbarang = open('datastok.json','r')
 
 def cek_stok():
-    data = json.load(stokbarang)
-    print(data)
+    with open('datastok.json') as f:
+        data = json.load(f)
+    i = 1
+    for stok in data['List']:
+        print(f"[{i}] {stok['nama']} \t: {stok['harga']} \t {stok['stok']}")
+        i += 1
+
+    tanya_beli = str(input('Apakah anda ingin membeli (y/n)'))
+    if tanya_beli == 'y':
+        beli_pembeli()
+    elif tanya_beli == 'n':
+        menu_pembeli()
 
 def beli_pembeli():
-    obat_dibeli = input("Masukkan obat yang dibeli: ")
-    banyak_obat = input("Berapa jumlah obat yang dibeli: ")
-    #stokbarang = open('datastok.json', 'r')
-    data = json.load(stokbarang)
-    if obat_dibeli in data :
-        beli_lg = input("Apakah ingin membeli obat lain?(y/t): ")
-        if beli_lg == 'y':
-            print(data)
-            return obat_dibeli
-            #kembali ke menu menampilkan stok
-        if beli_lg == 't':
-            print("Lengkapi identitas dibawah")
-            nama_pembeli = input("Masukkan nama pembeli : ")
-            umur_pembeli = int(input("Masukkan umur pembeli : "))
-            sex_pembeli = input("Masukkan gender pembeli : ")
-            alamat_pembeli = input("Masukkan alamat pembeli : ")
-            # Memilih Metode
-            print("""\nMetode Pembayaran
-            1. Lewat ATM/Mbanking/Bank ke no rekening xxxxxxx 
-            2. Bayar Ditempat
-            *Terdapat pajak 2,5%
-            Pilih (1/2)
-            """, end="\n")
-            metode = input(">> ")
-            #menampilkan struk
-        return beli_lg
-    else:
-        return cek_stok()
-        pass
-    #yang fungsi ini masih banyak yang kurang
+    fjason = open('datastok.json','r')
+    data = json.load(fjason)
+    temp = data['List']
+    for indeks in range(len(temp)):
+        print("[%d] %s %s %s" % (indeks,temp[indeks]['nama'],temp[indeks]['harga'],temp[indeks]['stok']))
+    idbeli = int(input('Masukkan ID barang yang mau dibeli >> '))
+    jumlahbeli = int(input('Masukkan jumlah barang yang mau dibeli >> '))
+    temp[idbeli]['stok'] -= jumlahbeli
+    if jumlahbeli > temp[idbeli]['stok']:
+        print('Anda membeli terlalu banyak, mohon dikurangi')
+        jumlahbeli = int(input('Masukkan ID barang yang mau dibeli >> '))
+    elif jumlahbeli <= temp[idbeli]['stok']:
+
+    fjason = open('datastok.json','w+')
+    fjason.write(json.dumps(data, indent=2))
+    fjason.close()
+
+
+    # obat_dibeli = input("Masukkan obat ingin yang dibeli: ")
+    # banyak_obat = input("Berapa jumlah obat yang dibeli: ")
+    # stokbarang = open('datastok.json', 'r')
+    # data = json.load(stokbarang)
+    # if obat_dibeli in data :
+    #     beli_lg = input("Apakah ingin membeli obat lain?(y/t): ")
+    #     if beli_lg == 'y':
+    #         print(data)
+    #         return obat_dibeli
+    #         #kembali ke menu menampilkan stok
+    #     if beli_lg == 't':
+    #         print("Lengkapi identitas dibawah")
+    #         nama_pembeli = input("Masukkan nama pembeli : ")
+    #         umur_pembeli = int(input("Masukkan umur pembeli : "))
+    #         sex_pembeli = input("Masukkan gender pembeli : ")
+    #         alamat_pembeli = input("Masukkan alamat pembeli : ")
+    #         # Memilih Metode
+    #         print("""\nMetode Pembayaran
+    #         1. Lewat ATM/Mbanking/Bank ke no rekening xxxxxxx 
+    #         2. Bayar Ditempat
+    #         *Terdapat pajak 2,5%
+    #         Pilih (1/2)
+    #         """, end="\n")
+    #         metode = input(">> ")
+    #         #menampilkan struk
+    #     return beli_lg
+    # else:
+    #     return cek_stok()
+    #     pass
+    # #yang fungsi ini masih banyak yang kurang
 def konsultasi():
     ## space buat ngisi ##
     pass
@@ -105,7 +133,6 @@ def kurangi_stok():
     print('SELAMAT DATANG DI APOTEK SUSET')
     fjason = open('datastok.json','r')
     data = json.load(fjason)
-    fjason.close()
     temp = data['List']
     for indeks in range(len(temp)):
         print("[%d] %s" % (indeks,temp[indeks]['nama']))
