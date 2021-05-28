@@ -198,8 +198,13 @@ def penjual_stok():
     # pass
 
 def tambah_stok_baru():
-    ## space buat ngisi ##
     print('SELAMAT DATANG DI APOTEK SUSET')
+    print('Berikut stok barang yang tersedia')
+    fjason = open('datastok.json', 'r')
+    data = json.load(fjason)
+    temp = data['List']
+    for indeks in range(len(temp)):
+        print("[%d] %s" % (indeks, temp[indeks]['nama']))
     n = int((input('Masukkan jumlah barang yang akan ditambahkan >> ')))
     i = 0
     while i < n:
