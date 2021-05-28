@@ -67,7 +67,66 @@ def beli_pembeli():
     #     pass
     # #yang fungsi ini masih banyak yang kurang
 def konsultasi():
-    ## space buat ngisi ##
+    #keluhan keluhan asyik
+keluhan=["1. susah bab",
+         "2. pusing kepala",
+         "3. suhu badan tinggi",
+         "4. gigi bengkak",
+         "5. terasa nyeri otot",
+         "6. bisul",
+         "7. gampang lelah",
+         "8. sariawan",
+         "9. mata kerasa perih \n"]
+
+#menunjukkan keluhan ke pembeli
+for keluh in keluhan :
+    print(keluh)
+
+tanya= (input('Apakah keluhan anda ada dalam daftar ?(Y/N)\n:'))
+if tanya == 'Y':
+    #menanyakan apakah keluhan 
+    keluhan_yang_kamurasain = int(input('Masukkan keluhan penyakit yang anda rasakan (1/2/3/4/5/6/7/8/9) \n:'))
+    if keluhan_yang_kamurasain == 1:
+        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+    elif keluhan_yang_kamurasain == 2:
+        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+    elif keluhan_yang_kamurasain == 3:
+        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+    elif keluhan_yang_kamurasain == 4:
+        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+    elif keluhan_yang_kamurasain == 5:
+        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+    elif keluhan_yang_kamurasain == 6:
+        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+    elif keluhan_yang_kamurasain == 7:
+        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+    elif keluhan_yang_kamurasain == 8:
+        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+    elif keluhan_yang_kamurasain == 9:
+        print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+    else:
+        pass
+elif tanya == 'N':
+    print("\nMohon maaf, apotek kami belum bisa melayani keluhan penyakit tersebut\nkami sangat menyarankan untuk menghubungi nomor rumah sakit yang sesuai dengan kota anda, berikut adalah nomor rumah sakit di setiap provinsi :\n ")
+    list_rs=[
+    'RSUP dr Kariadi, Semarang.Telepon: (024) 8413476',
+    'RSUD KRMT Wongsonegoro, Kota Semarang.Telepon: (024) 6711500',
+    'RSUD Tugurejo, Semarang.Telepon: (024) 7605297',
+    'RSU Sultan Agung, Semarang.Telepon: (024) 6580019',
+    'RSU St Elizabeth, Semarang.Telepon: (024) 8310035',
+    'RSU Telogorejo, Semarang.Telepon: (024) 86466000', 
+    'RSU Columbia Asia, Semarang.Telepon: (024) 7629999',
+    'RSU Tk III Bhakti Wira Tamtama, Kota Semarang.Telepon: (024) 3555944',
+    'RSU Bhayangkara, Semarang.Telepon: (024) 6720675',
+    'RSUD Salatiga.Telepon: (0298) 324074',
+    'RS Paru Dr Ario Wirawan, Salatiga.Telepon: (0298) 326130',
+    'RSU Tk IV 04.07.03 dr Asmir, SalatigaTelepon: (0298) 326045',
+    'RSUD Dr H Soewondo, Kendal.Telepon: (0294) 381433',
+    'RSUD Ambarawa Telepon: (0298)591020',
+    'RSUD Sunan Kalijaga Demak Telepon:(0291)685018',
+    'RSUD dr R Soedjati, Grobogan.Telepon:(0292) 421004']
+    for rs in list_rs:
+        print(rs)
     pass
 
 def menu_pembeli():
