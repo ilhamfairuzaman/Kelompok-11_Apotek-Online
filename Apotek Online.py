@@ -123,23 +123,23 @@ def konsultasi():
         #menanyakan apakah keluhan 
         keluhan_yang_kamurasain = int(input('Masukkan keluhan penyakit yang anda rasakan (1/2/3/4/5/6/7/8/9) \n:'))
         if keluhan_yang_kamurasain == 1:
-            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+            print("\nObat yang sesuai dengan keluhan Anda adalah Microlax Apotek kami obat untuk keluhan penyakit anda tersebut")
         elif keluhan_yang_kamurasain == 2:
-            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+            print("\nObat yang sesuai dengan keluhan Anda adalah Paracetamol Apotek kami obat untuk keluhan penyakit anda tersebut")
         elif keluhan_yang_kamurasain == 3:
-            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+            print("\nObat yang sesuai dengan keluhan Anda adalah Ibuprofen Apotek kami obat untuk keluhan penyakit anda tersebut")
         elif keluhan_yang_kamurasain == 4:
-            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+            print("\nObat yang sesuai dengan keluhan Anda adalah Amoxcicilin Apotek kami obat untuk keluhan penyakit anda tersebut")
         elif keluhan_yang_kamurasain == 5:
-            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+            print("\nObat yang sesuai dengan keluhan Anda adalah  Kortikosteroid Apotek kami obat untuk keluhan penyakit anda tersebut")
         elif keluhan_yang_kamurasain == 6:
-            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+            print("\nObat yang sesuai dengan keluhan Anda adalah Penisilin Apotek kami obat untuk keluhan penyakit anda tersebut")
         elif keluhan_yang_kamurasain == 7:
-            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+            print("\nObat yang sesuai dengan keluhan Anda adalah Neurobion Apotek kami obat untuk keluhan penyakit anda tersebut")
         elif keluhan_yang_kamurasain == 8:
-            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+            print("\nObat yang sesuai dengan keluhan Anda adalah Gentian Violet Apotek kami obat untuk keluhan penyakit anda tersebut")
         elif keluhan_yang_kamurasain == 9:
-            print("\nObat yang sesuai dengan keluhan Anda adalah ... Apotek kami obat untuk keluhan penyakit anda tersebut")
+            print("\nObat yang sesuai dengan keluhan Anda adalah Insto Apotek kami obat untuk keluhan penyakit anda tersebut")
         else:
             pass
     elif tanya == 'N':
@@ -198,8 +198,13 @@ def penjual_stok():
     # pass
 
 def tambah_stok_baru():
-    ## space buat ngisi ##
     print('SELAMAT DATANG DI APOTEK SUSET')
+    print('Berikut stok barang yang tersedia')
+    fjason = open('datastok.json', 'r')
+    data = json.load(fjason)
+    temp = data['List']
+    for indeks in range(len(temp)):
+        print("[%d] %s" % (indeks, temp[indeks]['nama']))
     n = int((input('Masukkan jumlah barang yang akan ditambahkan >> ')))
     i = 0
     while i < n:
