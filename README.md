@@ -13,6 +13,9 @@ Berkas datastok.json
     
 Berkas "README.md"
     Merupakan penjelasan singkat isi dari repository
+
+Berkas Flowchart Program.pdf
+    Merupakan berkas yang berisi gambar dari proses berjalannya program
     
 # System Requirement
    Untuk menjalankan program ini, pengguna hanya perlu memiliki software programming. Pengguna bebas memilih programnya (pycharm, VSCode, dsb.). Tidak ada library khusus yang harus diinstal terlebih dahulu apabila ingin menjalankan program ini.
