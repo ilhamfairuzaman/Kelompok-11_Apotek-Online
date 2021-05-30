@@ -14,7 +14,7 @@ Program ini dibuat untuk memudahkan apoteker dalam menjual obat-obat dan produk 
 <a href="https://github.com/ilhamfairuzaman/Kelompok-11_Apotek-Online/blob/main/README.md"> Berkas "README.md"</a>
     Merupakan penjelasan singkat isi dari repository
 
-<a href="https://github.com/ilhamfairuzaman/Kelompok-11_Apotek-Online/blob/main/Flowchart%20Program.pdf"> Berkas Flowchart Program.pdf"</a>
+<a href="https://github.com/ilhamfairuzaman/Kelompok-11_Apotek-Online/blob/main/Flowchart%20Program.pdf"> Berkas Flowchart Program.pdf</a>
     Merupakan berkas yang berisi gambar dari proses berjalannya program
     
 # System Requirement
