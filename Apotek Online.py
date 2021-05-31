@@ -1,3 +1,6 @@
+# Username = admin
+# Password = admin
+
 import json
 import datetime
 # ini adalah mahakarya
