@@ -283,7 +283,34 @@ def tambah_stok_baru():
     # pass
 
 def tambah_stok_lama():
-    pass
+    print('')
+    print('=' * 30)
+    print('MENAMBAH STOK APOTEK SUSET')
+    print('=' * 30)
+    print('Berikut stok barang yang tersedia')
+    fjason = open('datastok.json', 'r')
+    data = json.load(fjason)
+    temp = data['List']
+    for indeks in range(len(temp)):
+        print("[%d] %s : %s" % (indeks, temp[indeks]['nama'], temp[indeks]['stok']))
+
+    # input
+    n = int(input('Masukkan ID barang yang ingin ditambah >> '))
+    m = int(input('Masukkan jumlah barang baru >> '))
+
+    # Edit  json
+    temp[n]["stok"] = temp[n]["stok"] + m
+    jsonFile = open("datastok.json","w+")
+    jsonFile.write(json.dumps(data,indent=2))
+    jsonFile.close()    
+
+    # Menambah lagi ? 
+    lagi = input('Apakah ingin menambah barang lain? [y/n] >> ')
+    if lagi == 'y':
+        tambah_stok_lama()
+    else:
+        print('Data sudah ter-update !!!')
+        menu_penjual()
 
 def kurangi_stok():
     ## space buat ngisi ##
