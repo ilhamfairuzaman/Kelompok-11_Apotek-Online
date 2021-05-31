@@ -3,12 +3,17 @@
     {
       "nama": "Hansaplast",
       "harga": 5000,
-      "stok": 15
+      "stok": 40
     },
     {
       "nama": "Paracetamol",
       "harga": 25000,
-      "stok": 5
+      "stok": 50
+    },
+    {
+      "nama": "Tolak Angin",
+      "harga": 5000,
+      "stok": 50
     }
   ]
 }
