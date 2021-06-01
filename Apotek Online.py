@@ -23,6 +23,7 @@ def struk():
     print('=' * 30) 
     print("Lengkapi identitas dibawah")
     nama_pembeli = input("Masukkan nama pembeli : ")
+    bayar = int(input("Berapa uang anda: ")
 
     # Memilih Metode
     carabayar = input("""\nMetode Pembayaran
@@ -52,6 +53,9 @@ Pilih (1/2)\n >> """)
     print(f"Keterangan\t: {'Lunas' if carabayar == '1' else 'Belum Dibayar'}")
     print('')
     print('=' * 30)
+    print('uang anda\t: ', bayar)
+    kembalian = int(bayar-hargatot)
+    print('kembalian anda\t: ', kembalian)
     x = 'MOHON UNTUK MEMBAWA NOTA SAAT MELAKUKAN PENGAMBILAN OBAT'
     print(x.center(30))
     print('=' * 30)
