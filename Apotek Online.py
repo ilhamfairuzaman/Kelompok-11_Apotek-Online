@@ -14,7 +14,7 @@ jumlahb = []
 namab = []
 list_belanja = [namab,jumlahb]
 totalpb = []
-
+bayar = []
 
 def struk():
     print('')
@@ -23,7 +23,7 @@ def struk():
     print('=' * 30) 
     print("Lengkapi identitas dibawah")
     nama_pembeli = input("Masukkan nama pembeli : ")
-    bayar = int(input("Berapa uang anda: ")
+    bayar = int(input("Berapa uang anda: "))
 
     # Memilih Metode
     carabayar = input("""\nMetode Pembayaran
