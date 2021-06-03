@@ -60,8 +60,12 @@ Pilih (1/2)\n >> """)
     print(x.center(30))
     print('=' * 30)
 
-    # kembali ke menu utama
-    beli_pembeli() 
+    #tanya
+    tanya_habisbeli = input("Apakah ingin membeli lagi?(y/n): ")
+    if tanya_habisbeli == "y":
+        beli_pembeli()
+    elif tanya_habisbeli == "n":
+        menu_pembeli()
 #   pass
     i = 0
     n = len(idb)
