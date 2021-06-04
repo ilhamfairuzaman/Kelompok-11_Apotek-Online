@@ -3,6 +3,7 @@
 
 import json
 import datetime
+import csv
 
 # buka json
 stokbarang = open('datastok.json','r')
@@ -23,15 +24,27 @@ def struk():
     print('=' * 30) 
     print("Lengkapi identitas dibawah")
     nama_pembeli = input("Masukkan nama pembeli : ")
-    # bayar = int(input("Berapa uang anda: "))
+    hargatot = sum(totalpb)
 
     # Memilih Metode
-    carabayar = int(input("""\nMetode Pembayaran
+    print("\nTotal harga : ", hargatot)
+    carabayar = int(input("""Metode Pembayaran
 1. Online Payment
 2. Bayar Ditempat (cash)
 Pilih (1/2)\n >> """))
-    hargatot = sum(totalpb)
 
+    if carabayar == 1:
+        bayar = int(input("Berapa uang anda: "))
+        if bayar < hargatot:
+            print('Uang anda Kurang, silakan ulangi')
+            struk()
+        elif bayar >= hargatot:
+            kembalian = int(bayar-hargatot)
+    elif carabayar == 2:
+        bayar = 'Ditempat'
+        kembalian = 'Ditempat'
+
+    sekarang = datetime.datetime.now()
     # UI Nota
     print('')
     print('=' * 30)
@@ -39,7 +52,7 @@ Pilih (1/2)\n >> """))
     print(x.center(30))
     print('=' * 30)    
     print('')
-    print('Tanggal\t\t:',datetime.datetime.now())
+    print('Tanggal\t\t:',sekarang)
     print('Atas nama\t:', nama_pembeli)
     print('-' * 15)
     lst = len(jumlahb)
@@ -50,12 +63,11 @@ Pilih (1/2)\n >> """))
         i += 1
     print('-' * 15)
     print('Harga Total\t:', hargatot)
+    print('uang anda\t:', bayar)
+    print('kembalian anda\t:', kembalian)
     print(f"Keterangan\t: {'Lunas' if carabayar == 1 else 'Belum Dibayar'}")
     print('')
     print('=' * 30)
-    # print('uang anda\t: ', bayar)
-    # kembalian = int(bayar-hargatot)
-    # print('kembalian anda\t: ', kembalian)
     x = 'MOHON UNTUK MEMBAWA NOTA SAAT MELAKUKAN PENGAMBILAN OBAT'
     print(x.center(30))
     print('=' * 30)
@@ -77,6 +89,13 @@ Pilih (1/2)\n >> """))
 
         # limitting while
         i+=1
+    namablup = ';'.join(namab)
+    isicsv = [sekarang,nama_pembeli,namablup,str(hargatot)]
+
+    # Update CSV
+    with open('databeli.csv', 'a+') as f:
+        update = csv.writer(f)
+        update.writerow(isicsv)
 
     #tanya
     tanya_habisbeli = input("\nApakah ingin melanjutkan? (y/n): ")
@@ -114,6 +133,7 @@ def beli_pembeli():
     fjason = open('datastok.json','r')
     data = json.load(fjason)
     temp = data['List']
+    fjason.close()
 
     #Showing stok
     for indeks in range(len(temp)):
@@ -121,6 +141,9 @@ def beli_pembeli():
 
     # Inputting    
     idbeli = int(input('Masukkan ID barang yang mau dibeli >> '))
+    if idbeli > len(temp) - 1 :
+        print('\n!!! TIDAK ADA ID OBAT YANG TERSEDIA !!!')
+        beli_pembeli()
     jumlahbeli = int(input('Masukkan jumlah barang yang mau dibeli >> '))
     
     idb.append(idbeli)
