@@ -14,7 +14,7 @@ jumlahb = []
 namab = []
 list_belanja = [namab,jumlahb]
 totalpb = []
-bayar = []
+# bayar = []
 
 def struk():
     print('')
@@ -23,13 +23,13 @@ def struk():
     print('=' * 30) 
     print("Lengkapi identitas dibawah")
     nama_pembeli = input("Masukkan nama pembeli : ")
-    bayar = int(input("Berapa uang anda: "))
+    # bayar = int(input("Berapa uang anda: "))
 
     # Memilih Metode
-    carabayar = input("""\nMetode Pembayaran
+    carabayar = int(input("""\nMetode Pembayaran
 1. Online Payment
 2. Bayar Ditempat (cash)
-Pilih (1/2)\n >> """)
+Pilih (1/2)\n >> """))
     hargatot = sum(totalpb)
 
     # UI Nota
@@ -50,25 +50,19 @@ Pilih (1/2)\n >> """)
         i += 1
     print('-' * 15)
     print('Harga Total\t:', hargatot)
-    print(f"Keterangan\t: {'Lunas' if carabayar == '1' else 'Belum Dibayar'}")
+    print(f"Keterangan\t: {'Lunas' if carabayar == 1 else 'Belum Dibayar'}")
     print('')
     print('=' * 30)
-    print('uang anda\t: ', bayar)
-    kembalian = int(bayar-hargatot)
-    print('kembalian anda\t: ', kembalian)
+    # print('uang anda\t: ', bayar)
+    # kembalian = int(bayar-hargatot)
+    # print('kembalian anda\t: ', kembalian)
     x = 'MOHON UNTUK MEMBAWA NOTA SAAT MELAKUKAN PENGAMBILAN OBAT'
     print(x.center(30))
     print('=' * 30)
 
-    #tanya
-    tanya_habisbeli = input("Apakah ingin membeli lagi?(y/n): ")
-    if tanya_habisbeli == "y":
-        beli_pembeli()
-    elif tanya_habisbeli == "n":
-        menu_pembeli()
-#   pass
     i = 0
     n = len(idb)
+
     # update json setelah beli
     while i < n:
         bukaF = open('datastok.json','r')
@@ -83,6 +77,13 @@ Pilih (1/2)\n >> """)
 
         # limitting while
         i+=1
+
+    #tanya
+    tanya_habisbeli = input("\nApakah ingin melanjutkan? (y/n): ")
+    if tanya_habisbeli == "y":
+        menu_pembeli()
+    elif tanya_habisbeli == "n":
+        show_menu()
 
 def cek_stok():
     print('')
