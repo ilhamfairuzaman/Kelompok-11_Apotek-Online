@@ -8,12 +8,17 @@
     {
       "nama": "Tolak Angin",
       "harga": 5000,
-      "stok": 15
+      "stok": 14
     },
     {
       "nama": "Hansaplast",
       "harga": 5000,
-      "stok": 15
+      "stok": 14
+    },
+    {
+      "nama": "Antimo",
+      "harga": 5000,
+      "stok": 12
     }
   ]
 }

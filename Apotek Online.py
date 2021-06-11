@@ -20,7 +20,7 @@ totalpb = []
 def struk():
     print('')
     print('=' * 30)
-    print('SELAMAT DATANG DI APOTEK SUSET')
+    print('SELAMAT DATANG DI APOTEK SEHAT')
     print('=' * 30) 
     print("Lengkapi identitas dibawah")
     nama_pembeli = input("Masukkan nama pembeli : ")
@@ -47,30 +47,30 @@ Pilih (1/2)\n >> """))
     sekarang = datetime.datetime.now()
     # UI Nota
     print('')
-    print('=' * 30)
-    x = 'NOTA PEMBAYARAN APOTEK SUSET'
-    print(x.center(30))
-    print('=' * 30)    
+    print('=' * 50)
+    x = 'NOTA PEMBAYARAN APOTEK SEHAT'
+    print(x.center(50))
+    print('=' * 50)    
     print('')
     print('Tanggal\t\t:',sekarang)
     print('Atas nama\t:', nama_pembeli)
-    print('-' * 15)
+    print('-' * 30)
     lst = len(jumlahb)
     i = 0
     print('Nama\t\tJumlah\tHarga\tTotal')
     while i < lst:
         print(f'{namab[i]}\t{jumlahb[i]}\t{hargab[i]}\t{hargab[i]*jumlahb[i]}')
         i += 1
-    print('-' * 15)
+    print('-' * 30)
     print('Harga Total\t:', hargatot)
     print('uang anda\t:', bayar)
     print('kembalian anda\t:', kembalian)
     print(f"Keterangan\t: {'Lunas' if carabayar == 1 else 'Belum Dibayar'}")
     print('')
-    print('=' * 30)
-    x = 'MOHON UNTUK MEMBAWA NOTA SAAT MELAKUKAN PENGAMBILAN OBAT'
-    print(x.center(30))
-    print('=' * 30)
+    print('=' * 50)
+    x = 'MOHON NOTA DIBAWA SAAT PENGAMBILAN OBAT'
+    print(x.center(50))
+    print('=' * 50)
 
     i = 0
     n = len(idb)
@@ -107,7 +107,7 @@ Pilih (1/2)\n >> """))
 def cek_stok():
     print('')
     print('=' * 30)
-    print('STOK YANG TERSEDIA APOTEK SUSET')
+    print('STOK YANG TERSEDIA APOTEK SEHAT')
     print('=' * 30)  
     with open('datastok.json') as f:
         data = json.load(f)
@@ -128,7 +128,7 @@ def cek_stok():
 def beli_pembeli():
     print('')
     print('=' * 30)
-    print('SELAMAT DATANG DI APOTEK SUSET')
+    print('SELAMAT DATANG DI APOTEK SEHAT')
     print('=' * 30) 
     fjason = open('datastok.json','r')
     data = json.load(fjason)
@@ -238,12 +238,12 @@ def konsultasi():
 def menu_pembeli():
     print('')
     print('=' * 30)
-    print('SELAMAT DATANG DI APOTEK SUSET')
+    print('SELAMAT DATANG DI APOTEK SEHAT')
     print('=' * 30)
     choice = int((input('''
     Selamat datang, pelanggan:
 [1] Cek Stok
-[2] Beli stok
+[2] Beli
 [3] Konsultasi
 [4] Kembali ke menu utama
 >> ''')))
@@ -263,7 +263,7 @@ def menu_pembeli():
 def penjual_stok():
     print('')
     print('=' * 30)
-    print('STOK YANG TERSEDIA APOTEK SUSET')
+    print('STOK YANG TERSEDIA APOTEK SEHAT')
     print('=' * 30)  
     with open('datastok.json') as f:
         data = json.load(f)
@@ -280,7 +280,7 @@ def penjual_stok():
 def tambah_stok_baru():
     print('')
     print('=' * 30)
-    print('MENAMBAH STOK APOTEK SUSET')
+    print('MENAMBAH STOK APOTEK SEHAT')
     print('=' * 30)
     print('Berikut stok barang yang tersedia')
     fjason = open('datastok.json', 'r')
@@ -299,7 +299,7 @@ def tambah_stok_baru():
         data = json.load(fjason)
         fjason.close()
         temp = data['List']
-        a = input('Nama Barang >>')
+        a = input('Nama Barang >> ')
         b = int(input('Harga Barang >> '))
         c = int(input('Jumlah stok >> '))
         y = {"nama": a,"harga": b, "stok":c}
@@ -317,7 +317,7 @@ def tambah_stok_baru():
 def tambah_stok_lama():
     print('')
     print('=' * 30)
-    print('MENAMBAH STOK APOTEK SUSET')
+    print('MENAMBAH STOK APOTEK SEHAT')
     print('=' * 30)
     print('Berikut stok barang yang tersedia')
     fjason = open('datastok.json', 'r')
@@ -348,7 +348,7 @@ def kurangi_stok():
     ## space buat ngisi ##
     print('')
     print('=' * 30)
-    print('MENGURANGI STOK APOTEK SUSET')
+    print('MENGURANGI STOK APOTEK SEHAT')
     print('=' * 30)
     fjason = open('datastok.json','r')
     data = json.load(fjason)
@@ -366,7 +366,7 @@ def kurangi_stok():
 def menu_penjual():
     print('')
     print('=' * 30)
-    print('SELAMAT DATANG DI APOTEK SUSET')
+    print('SELAMAT DATANG DI APOTEK SEHAT')
     print('=' * 30)
     choice = int((input('''
     Selamat datang, admin:
@@ -416,7 +416,7 @@ def login_penjual():
 def show_menu():
     print('')
     print('=' * 30)
-    print('SELAMAT DATANG DI APOTEK SUSET')
+    print('SELAMAT DATANG DI APOTEK SEHAT')
     print('=' * 30)    
     choice = int((input('''
     Anda Masuk Sebagai:
