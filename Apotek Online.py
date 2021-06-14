@@ -184,7 +184,7 @@ def konsultasi():
         print(keluh)
 
     tanya= (input('Apakah keluhan anda ada dalam daftar ?(Y/N)\n: '))
-    if tanya == 'Y':
+    if tanya == 'Y' or tanya == 'y':
         #menanyakan apakah keluhan 
         keluhan_yang_kamurasain = int(input('Masukkan keluhan penyakit yang anda rasakan (1/2/3/4/5/6/7/8/9) \n:'))
         if keluhan_yang_kamurasain == 1:
@@ -213,7 +213,7 @@ def konsultasi():
             beli_pembeli()
         elif tanya =='n':
             menu_pembeli()
-    elif tanya == 'N':
+    elif tanya == 'N' or tanya == 'n':
         print("\nMohon maaf, apotek kami belum bisa melayani keluhan penyakit tersebut\nkami sangat menyarankan untuk menghubungi nomor rumah sakit yang sesuai dengan kota anda, berikut adalah nomor rumah sakit di setiap provinsi :\n ")
         list_rs=[
         'RSUP dr Kariadi, Semarang.Telepon: (024) 8413476',
