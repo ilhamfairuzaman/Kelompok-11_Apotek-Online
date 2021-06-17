@@ -15,9 +15,8 @@ jumlahb = []
 namab = []
 list_belanja = [namab,jumlahb]
 totalpb = []
-# bayar = []
 
-def struk():
+def struk(): # Fungsi untuk membuat struk
     print('')
     print('=' * 30)
     print('SELAMAT DATANG DI APOTEK SEHAT')
@@ -104,7 +103,7 @@ Pilih (1/2)\n >> """))
     elif tanya_habisbeli == "n":
         show_menu()
 
-def cek_stok():
+def cek_stok(): # mengecek stok dari datastok.json
     print('')
     print('=' * 30)
     print('STOK YANG TERSEDIA APOTEK SEHAT')
@@ -125,7 +124,7 @@ def cek_stok():
     elif tanya_beli == 'n':
         menu_pembeli()
 
-def beli_pembeli():
+def beli_pembeli(): # Fungsi untuk pembeli dalam membeli barang / obat
     print('')
     print('=' * 30)
     print('SELAMAT DATANG DI APOTEK SEHAT')
@@ -143,7 +142,7 @@ def beli_pembeli():
     idbeli = int(input('Masukkan ID barang yang mau dibeli >> '))
     if idbeli > len(temp) - 1 :
         print('\n!!! TIDAK ADA ID OBAT YANG TERSEDIA !!!')
-        beli_pembeli()
+        cek_stok()
     jumlahbeli = int(input('Masukkan jumlah barang yang mau dibeli >> '))
     
     idb.append(idbeli)
@@ -167,8 +166,8 @@ def beli_pembeli():
         elif beli_lg =='n':
             struk()
 
-def konsultasi():
-    #keluhan keluhan asyik
+def konsultasi(): # Fungsi untuk pembeli melakukan konsultasi
+    # daftar keluhan
     keluhan=["1. susah bab",
             "2. pusing kepala",
             "3. suhu badan tinggi",
@@ -235,7 +234,7 @@ def konsultasi():
         for rs in list_rs:
             print(rs)
 
-def menu_pembeli():
+def menu_pembeli(): # Menu Pembeli
     print('')
     print('=' * 30)
     print('SELAMAT DATANG DI APOTEK SEHAT')
@@ -275,9 +274,7 @@ def penjual_stok():
         i += 1
     menu_penjual()
 
-    # pass
-
-def tambah_stok_baru():
+def tambah_stok_baru(): # Fungsi untuk menambah stok yang belum ada
     print('')
     print('=' * 30)
     print('MENAMBAH STOK APOTEK SEHAT')
@@ -312,9 +309,8 @@ def tambah_stok_baru():
     else:
         print('Data sudah ter-update !!!')
         menu_penjual()
-    # pass
 
-def tambah_stok_lama():
+def tambah_stok_lama(): # Fungsi untuk menambah stok yang sudah ada
     print('')
     print('=' * 30)
     print('MENAMBAH STOK APOTEK SEHAT')
@@ -344,8 +340,7 @@ def tambah_stok_lama():
         print('Data sudah ter-update !!!')
         menu_penjual()
 
-def kurangi_stok():
-    ## space buat ngisi ##
+def kurangi_stok(): # Fungsi untuk penjual mengurangi stok
     print('')
     print('=' * 30)
     print('MENGURANGI STOK APOTEK SEHAT')
@@ -363,7 +358,7 @@ def kurangi_stok():
     menu_penjual()
     # pass
 
-def menu_penjual():
+def menu_penjual(): # Menu untuk Penjual
     print('')
     print('=' * 30)
     print('SELAMAT DATANG DI APOTEK SEHAT')
@@ -395,9 +390,8 @@ def menu_penjual():
         show_menu()
     else:
         print('Masukkan ulang pilihan')
-    # pass
 
-def login_penjual():
+def login_penjual():    # Fungsi login penjual
     admindata = {"admin":{"pw":"admin"}}
     username = input('Masukkan Username >> ')
     if username in admindata:
@@ -411,9 +405,8 @@ def login_penjual():
     else:
         print('Username Salah !!!')
         login_penjual()
-    # pass
 
-def show_menu():
+def show_menu():    # Menu utama
     print('')
     print('=' * 30)
     print('SELAMAT DATANG DI APOTEK SEHAT')

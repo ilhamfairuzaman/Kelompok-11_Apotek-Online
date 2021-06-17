@@ -1,19 +1,19 @@
 {
   "List": [
     {
-      "nama": "Paracetamol",
-      "harga": 25000,
-      "stok": 11
-    },
-    {
       "nama": "Tolak Angin",
       "harga": 5000,
-      "stok": 10
+      "stok": 7
     },
     {
       "nama": "Hansaplast",
       "harga": 5000,
       "stok": 10
+    },
+    {
+      "nama": "Antimo",
+      "harga": 5000,
+      "stok": 15
     }
   ]
 }
