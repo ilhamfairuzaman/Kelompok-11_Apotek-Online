@@ -1,9 +1,9 @@
 # Username = admin
 # Password = admin
 
-import json
-import datetime
-import csv
+import json         # untuk mengakses datastok.json
+import datetime     # untuk penggunaan tanggal pada program
+import csv          # untuk mengakses databeli.csv
 
 # buka json
 stokbarang = open('datastok.json','r')

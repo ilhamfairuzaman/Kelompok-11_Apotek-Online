@@ -3,7 +3,7 @@
     {
       "nama": "Tolak Angin",
       "harga": 5000,
-      "stok": 7
+      "stok": 10
     },
     {
       "nama": "Hansaplast",
@@ -13,7 +13,7 @@
     {
       "nama": "Antimo",
       "harga": 5000,
-      "stok": 15
+      "stok": 13
     }
   ]
 }
