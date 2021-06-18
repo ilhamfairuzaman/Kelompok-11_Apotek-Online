@@ -43,7 +43,7 @@ Pilih (1/2)\n >> """))
         bayar = 'Ditempat'
         kembalian = 'Ditempat'
 
-    sekarang = datetime.datetime.now()
+    tanggal = datetime.datetime.now()
     # UI Nota
     print('')
     print('=' * 50)
@@ -51,7 +51,7 @@ Pilih (1/2)\n >> """))
     print(x.center(50))
     print('=' * 50)    
     print('')
-    print('Tanggal\t\t:',sekarang)
+    print('Tanggal\t\t:',tanggal)
     print('Atas nama\t:', nama_pembeli)
     print('-' * 30)
     lst = len(jumlahb)
@@ -89,7 +89,7 @@ Pilih (1/2)\n >> """))
         # limitting while
         i+=1
     namablup = ';'.join(namab)
-    isicsv = [sekarang,nama_pembeli,namablup,str(hargatot)]
+    isicsv = [tanggal,nama_pembeli,namablup,str(hargatot)]
 
     # Update CSV
     with open('databeli.csv', 'a+') as f:
@@ -301,7 +301,7 @@ def tambah_stok_baru(): # Fungsi untuk menambah stok yang belum ada
         c = int(input('Jumlah stok >> '))
         y = {"nama": a,"harga": b, "stok":c}
         temp.append(y)
-
+        # Update json
         fjason = open('datastok.json','w+')
         fjason.write(json.dumps(data, indent=2))
         fjason.close()
@@ -356,7 +356,6 @@ def kurangi_stok(): # Fungsi untuk penjual mengurangi stok
     fjason.write(json.dumps(data, indent=2))
     fjason.close()
     menu_penjual()
-    # pass
 
 def menu_penjual(): # Menu untuk Penjual
     print('')
